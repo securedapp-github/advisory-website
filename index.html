@@ -1,0 +1,325 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SecureDApp - Blockchain Security Advisory</title>
+
+    <!-- Fonts: Inter & Poppins for Enterprise Tech Feel -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Poppins:wght@400;500;600;700&display=swap"
+        rel="stylesheet">
+
+    <!-- Ionicons -->
+    <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+
+    <!-- Three.js for Background -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="style-quiz.css">
+</head>
+
+<body class="custom-cursor">
+
+    <!-- Custom Cursor Elements -->
+    <div class="cursor-dot" id="cursor-dot"></div>
+    <div class="cursor-outline" id="cursor-outline"></div>
+
+    <!-- Three.js Background Container -->
+    <div id="canvas-container"></div>
+
+    <!-- Navigation -->
+    <nav class="navbar" id="navbar">
+        <div class="nav-container">
+            <a href="https://securedapp.io/" class="logo-img-link">
+                <img src="assets/img/SD-logo-white.png" alt="SecureDApp" class="nav-logo-image">
+            </a>
+
+            <!-- Socials Removed -->
+        </div>
+    </nav>
+
+    <!-- 1. Hero Section -->
+    <header class="hero-section">
+        <div class="container fade-in-up">
+            <h1 class="hero-title">
+                <span class="reveal-text">BUILD TO LAST</span><br>
+                <span class="reveal-text text-neon">SECURE TO SCALE</span>
+            </h1>
+            <p class="hero-sub">
+                Before you launch. Before you scale.<br>
+                Get a 30-minute no-cost security clarity session with SecureDApp’s blockchain experts.
+            </p>
+            <p class="hero-supporting">Not a sales call. Just technical insight.</p>
+
+            <a href="https://calendly.com/security-consultation-from-securedapp/30min?back=1&month=2026-02"
+                target="_blank" class="cta-button primary glow-hover">
+                BOOK MY 30-MIN SECURITY SESSION
+            </a>
+
+            <div class="scroll-indicator">
+                <ion-icon name="arrow-down-outline" class="smooth-bob"></ion-icon>
+            </div>
+        </div>
+    </header>
+
+    <!-- 2. Problem Section (Landscape) -->
+    <section class="problem-section-landscape">
+        <div class="container">
+            <div class="problem-grid">
+                <!-- Left: Abstract Graphic -->
+                <div class="problem-visual fade-on-scroll">
+                    <!-- CSS/SVG Wireframe Graphic -->
+                    <div class="wireframe-cube">
+                        <div class="face front"></div>
+                        <div class="face back"></div>
+                        <div class="face right"></div>
+                        <div class="face left"></div>
+                        <div class="face top"></div>
+                        <div class="face bottom"></div>
+                        <div class="grid-lines"></div>
+                    </div>
+                </div>
+
+                <!-- Right: Content -->
+                <div class="problem-content fade-on-scroll delay-1">
+                    <h2 class="section-title">In Web3, there is no undo.</h2>
+                    <div class="glowing-divider"></div>
+                    <ul class="problem-list">
+                        <li>
+                            <ion-icon name="alert-circle-outline"></ion-icon>
+                            <span>A weak multisig can drain liquidity</span>
+                        </li>
+                        <li>
+                            <ion-icon name="lock-closed-outline"></ion-icon>
+                            <span>An overlooked access control can freeze assets</span>
+                        </li>
+                        <li>
+                            <ion-icon name="eye-off-outline"></ion-icon>
+                            <span>A missing monitoring layer delays exploit detection</span>
+                        </li>
+                    </ul>
+                    <a href="#security-check" class="cta-button secondary-glow">
+                        CHECK MY SECURITY READINESS
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 3. Security Confidence Check (Refined) -->
+    <section id="security-check" class="security-check-section-landscape">
+        <div class="container">
+            <div class="security-grid">
+                <!-- Left Side -->
+                <div class="sec-left-col fade-on-scroll">
+                    <h2 class="sec-landscape-title">Security Confidence Check</h2>
+                    <p class="sec-landscape-sub">
+                        Is your protocol truly ready for mainnet? <br>
+                        Identify critical gaps in 2 minutes.
+                    </p>
+                    <div id="quiz-start-area">
+                        <button type="button" id="start-quiz-btn" class="cta-button primary glow-hover">
+                            Start 2-Min Check
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Right Side: Interaction -->
+                <div class="sec-right-col fade-on-scroll delay-1">
+                    <div class="quiz-wizard-card" id="quiz-wizard-container" style="display: none;">
+
+                        <!-- Header -->
+                        <div class="wizard-header">
+                            <span id="step-count">Question 1/5</span>
+                            <div class="wizard-progress-track">
+                                <div class="wizard-progress-fill" id="wizard-progress"></div>
+                            </div>
+                        </div>
+
+                        <!-- Form -->
+                        <form id="security-quiz-wizard">
+                            <!-- Q1 -->
+                            <div class="wizard-step active" data-step="1">
+                                <label class="question-label">1. Has your smart contract undergone an independent
+                                    security audit?</label>
+                                <div class="options-vertical">
+                                    <label class="option-check"><input type="radio" name="q1" value="2"><span>Yes,
+                                            completed</span></label>
+                                    <label class="option-check"><input type="radio" name="q1" value="1"><span>In
+                                            progress / Internal only</span></label>
+                                    <label class="option-check"><input type="radio" name="q1" value="0"><span>No / Not
+                                            yet</span></label>
+                                </div>
+                            </div>
+                            <!-- Q2 -->
+                            <div class="wizard-step" data-step="2">
+                                <label class="question-label">2. Is on-chain threat detection and mitigation actively
+                                    enabled for your protocol?</label>
+                                <div class="options-vertical">
+                                    <label class="option-check"><input type="radio" name="q2" value="2"><span>Yes,
+                                            active 24/7</span></label>
+                                    <label class="option-check"><input type="radio" name="q2" value="1"><span>Partially
+                                            / Planned</span></label>
+                                    <label class="option-check"><input type="radio" name="q2"
+                                            value="0"><span>No</span></label>
+                                </div>
+                            </div>
+                            <!-- Q3 -->
+                            <div class="wizard-step" data-step="3">
+                                <label class="question-label">3. Is your multisig configuration formally
+                                    reviewed?</label>
+                                <div class="options-vertical">
+                                    <label class="option-check"><input type="radio" name="q3" value="2"><span>Yes,
+                                            strictly defined</span></label>
+                                    <label class="option-check"><input type="radio" name="q3" value="1"><span>Not sure /
+                                            Basic setup</span></label>
+                                    <label class="option-check"><input type="radio" name="q3" value="0"><span>No
+                                            multisig / Single key</span></label>
+                                </div>
+                            </div>
+                            <!-- Q4 -->
+                            <div class="wizard-step" data-step="4">
+                                <label class="question-label">4. Do you have a tested incident response plan?</label>
+                                <div class="options-vertical">
+                                    <label class="option-check"><input type="radio" name="q4" value="2"><span>Yes,
+                                            drilled & documented</span></label>
+                                    <label class="option-check"><input type="radio" name="q4" value="1"><span>Basic
+                                            outline only</span></label>
+                                    <label class="option-check"><input type="radio" name="q4" value="0"><span>No plan in
+                                            place</span></label>
+                                </div>
+                            </div>
+                            <!-- Q5 -->
+                            <div class="wizard-step" data-step="5">
+                                <label class="question-label">5. Has your protocol been stress-tested on mainnet
+                                    conditions?</label>
+                                <div class="options-vertical">
+                                    <label class="option-check"><input type="radio" name="q5" value="2"><span>Yes,
+                                            extensive testing</span></label>
+                                    <label class="option-check"><input type="radio" name="q5" value="1"><span>Somewhat /
+                                            Testnet only</span></label>
+                                    <label class="option-check"><input type="radio" name="q5" value="0"><span>No stress
+                                            testing</span></label>
+                                </div>
+                            </div>
+
+                            <!-- Controls -->
+                            <div class="wizard-controls">
+                                <button type="button" id="prev-btn" class="nav-btn secondary-ghost"
+                                    disabled>Previous</button>
+                                <button type="button" id="next-btn" class="nav-btn primary-small">Next</button>
+                                <button type="button" id="finish-btn" class="nav-btn primary-small"
+                                    style="display: none;">Check Score</button>
+                            </div>
+                            <p id="wizard-error" class="error-msg"></p>
+                        </form>
+
+                        <!-- Centered Clean Result -->
+                        <div id="wizard-result" class="wizard-result-card hidden" style="display: none;">
+                            <h3 class="result-header-text">Security Readiness</h3>
+                            <div class="score-flash">
+                                <span id="score-text-final">0%</span>
+                            </div>
+
+                            <div class="recommendation-box">
+                                <p id="final-recommendation">Calculating...</p>
+                            </div>
+
+                            <a href="#what-happens" class="cta-button primary glow-hover single-result-cta">
+                                See What Happens in 30 Minutes
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 4. What Happens in 30 Minutes? (Start of Roadmap) -->
+    <section class="journey-section" id="what-happens">
+        <div class="container">
+            <h2 class="section-title fade-on-scroll text-center">What Happens in 30 Minutes?</h2>
+            <p class="section-subtitle fade-on-scroll text-center"
+                style="max-width: 700px; margin: 0 auto 60px; color: var(--text-muted); font-size: 1.1rem;">
+                From Uncertainty to Clarity — In 30 Minutes.<br>
+                We help you move from assumptions to actionable direction.
+            </p>
+
+            <div class="journey-timeline vertical-on-mobile">
+                <div class="timeline-line"></div>
+
+                <!-- Step 1 -->
+                <div class="journey-node fade-on-scroll">
+                    <div class="node-circle"><ion-icon name="construct-outline"></ion-icon></div>
+                    <h3>1. Architecture Sanity Check</h3>
+                    <p class="node-desc">
+                        A high-level review of your smart contract logic, deployment structure, and configuration design
+                        to identify potential structural blind spots.
+                    </p>
+                </div>
+
+                <!-- Step 2 -->
+                <div class="journey-node fade-on-scroll delay-1">
+                    <div class="node-circle"><ion-icon name="warning-outline"></ion-icon></div>
+                    <h3>2. Risk Prioritization</h3>
+                    <p class="node-desc">
+                        We categorize potential vulnerabilities by impact — from “Critical” to “Secondary” — so you know
+                        what truly demands attention.
+                    </p>
+                </div>
+
+                <!-- Step 3 -->
+                <div class="journey-node fade-on-scroll delay-2">
+                    <div class="node-circle"><ion-icon name="map-outline"></ion-icon></div>
+                    <h3>3. Scaling Readiness Roadmap</h3>
+                    <p class="node-desc">
+                        A practical outline for strengthening your protocol before scaling, including audit strategy,
+                        monitoring layers, and operational safeguards.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Final CTA Section (Replaces Sales/Limited Sections) -->
+    <section class="final-cta-section centered-layout">
+        <div class="container fade-on-scroll">
+            <h2 class="section-title large-h2">Secure Your Foundation Before You Scale</h2>
+            <p class="cta-support-text" style="color: var(--text-muted); margin-bottom: 30px; font-size: 1.1rem;">
+                Choose a time that works for your engineering lead.
+            </p>
+
+            <a href="https://calendly.com/security-consultation-from-securedapp/30min?back=1&month=2026-02"
+                target="_blank" class="cta-button primary glow-hover scale-up-btn">
+                BOOK A 30-MIN NO-COST SECURITY SESSION
+            </a>
+
+            <p class="urgency-text-small"
+                style="margin-top: 20px; color: #FFFFFF; font-weight: bold; font-size: 0.9rem;">
+                <span>Limited slots available</span>
+            </p>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="site-footer minimal">
+        <div class="container footer-content-row">
+            <a href="https://securedapp.io/" class="footer-brand">
+                <img src="assets/img/SD-logo-white.png" alt="SecureDApp" class="nav-logo-image">
+            </a>
+
+            <div class="copyright" style="font-size: 0.8rem; color: #666;">&copy; 2024 SecureDApp.</div>
+        </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+
+</html>
